@@ -18,4 +18,4 @@ class SocialPlatform:
         return (username == self.admin_username and 
                 self.hash_password(password) == self.admin_password)
 
-platform = SocialPlatform("AIRecord", "AddiMacDaddy", "Apollo1988aal")
+platform = SocialPlatform("AIRecord")
