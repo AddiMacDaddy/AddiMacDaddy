@@ -43,6 +43,16 @@ def register():
     mail.send(msg)
 
     return jsonify({'message': 'User registered successfully, check your email for credentials'}), 201
+password = generate_password()
+new_user = User(username=username, password=password)
+db.session.add(new_user)
+db.session.commit()
+
+msg = Message('Welcome to Our Social Media Platform', recipients=[data.get('email')])
+msg.body = f'Your account has been created.\nUsername: {username}\nPassword: {password}'
+mail.send(msg)
+
+return jsonify({'message': 'User registered successfully, check your email for credentials'}), 201
 
 if __name__ == '__main__':
     db.create_all()
